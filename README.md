@@ -4,6 +4,8 @@
 ```
 npm install
 ```
+## Demo
+https://strawberry-jam-note.web.app/
 
 ### Compiles and hot-reloads for development
 ```
