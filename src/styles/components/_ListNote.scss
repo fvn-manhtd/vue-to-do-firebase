@@ -1,0 +1,68 @@
+.list-notes{
+    @include pcmode(){
+        margin: 40px 0;
+        &__content{
+            margin: 0 auto;
+        }
+        &__box{
+            border: 1px solid rgba($link-color, .1);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px;
+            width: calc(100% / 5);
+            box-sizing: border-box;
+            cursor: pointer;
+            &__title{
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            &__des{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 10;
+                overflow: hidden;
+            }
+            button{
+                color: $default-border-color;
+                background-color: $danger-color;
+                margin: 10px 0 0;
+                font-size: 0.8em;
+                float: right;
+            }
+        }
+    }
+
+    @include spmode(){
+        margin: 40px 0;
+        &__content{
+            margin: 0 auto;
+        }
+        &__box{
+            border: 1px solid rgba($link-color, .1);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 10px;
+            width: calc(100% - 20px);
+            box-sizing: border-box;
+            cursor: pointer;
+            &__title{
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+            &__des{
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 10;
+                overflow: hidden;
+            }
+            button{
+                color: $default-border-color;
+                background-color: $danger-color;
+                margin: 10px 0 0;
+                font-size: 0.8em;
+                float: right;
+            }
+        }
+    }
+    
+}

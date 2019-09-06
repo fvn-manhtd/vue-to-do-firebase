@@ -1,0 +1,442 @@
+$form-font-size: 0.8rem;
+$form-sp-font-size: 1.9rem;
+$form-line-height: 2em;
+$form-border-color: #ccc;
+$form-border: 1px solid $form-border-color;
+$form-container-padding: $gray-container-padding;
+$form-padding-y: 0.4em;
+$form-padding-x: 1em;
+$form-margin-y: 1.3em;
+$form-border-radius: 5px;
+
+.form-heading1 {
+	color: $text-color;
+	text-align: center;
+	font-weight: bold;
+	@include pcmode {
+		font-size: 1.3em;
+	}
+}
+.form-heading2 {
+	color: $muted-text-color;
+	margin: 2em 0 0.5em;
+	@include pcmode {
+		margin: 2.8em 0 1.5em;
+	}
+}
+.form-label {
+	position: relative;
+	box-sizing: border-box;
+	line-height: $form-line-height;
+	border: 1px solid rgba(#fff, 0);
+	@include pcmode {
+		// padding-right は .form-required 分の余白
+		padding: $form-padding-y $form-padding-x $form-padding-y 1.5em;
+	}
+	&.form-required {
+		&:after {
+			display: inline-block;
+			content: '※';
+			color: $danger-color;
+			margin-left: 0.5em;
+			@include pcmode {
+				display: block;
+				position: absolute;
+				right: -1px;
+				top: 50%;
+				margin: 0;
+				// TODO vendor prefix
+				transform: translateY(-50%);
+			}
+		}
+	}
+}
+
+.form-control {
+	@include pcmode {
+		padding: 0;
+	}
+	select,
+	#{$text-inputs-list},
+	.form-text {
+		font-size: 1em;
+		box-sizing: border-box;
+		display: block;
+		width: 100%;
+		margin: 0;
+		padding: $form-padding-y $form-padding-x;
+		line-height: $form-line-height;
+		border-radius: $form-border-radius;
+		border: $form-border;
+		background: #fff;
+
+		@include pcmode {
+			// IEでline-heightによる高さ調整が効いていないので、崩れを防ぐ
+			min-height: 37px;
+
+			&.form-auto-width {
+				width: auto;
+			}
+		}
+		@include spmode {
+			-moz-appearance: none;
+			appearance: none;
+		}
+		&.error {
+			border-color: $danger-color !important;
+
+			background-image: $input-error;
+			background-position: right center;
+			background-repeat: no-repeat;
+		}
+	}
+	.form-text {
+		height: $form-line-height * 5; // 5行分表示
+		overflow-y: auto;
+	}
+	.form-inline-radio {
+		margin: 0;
+		padding: $form-padding-y $form-padding-x $form-padding-y 0;
+		line-height: $form-line-height;
+
+		label {
+			display: inline-block;
+			margin-right: 1em;
+		}
+	}
+	select {
+		position: relative;
+		height: $form-line-height + $form-padding-y * 2;
+		background: $svg-select right center no-repeat #fff;
+
+		&::-ms-expand {
+			display: none;
+		}
+	}
+	input[type='radio'],
+	input[type='checkbox'] {
+		position: relative;
+		top: -2.5px; // 仮に指定。本来はテキスト側のline-heightで調整すべきかも
+		font-size: 1.5rem;
+		width: 25px;
+		height: 20px;
+		vertical-align: middle;
+		outline: 0;
+		border: none;
+		background-color: transparent;
+		background-position: left center;
+		background-repeat: no-repeat;
+
+		&::-ms-check {
+			display: none;
+		}
+		@include spmode {
+			width: 36px;
+			height: 36px;
+			background-size: contain;
+			margin-right: 15px;
+		}
+	}
+	input[type='radio'] {
+		background-image: $svg-radio-false;
+
+		&.error {
+			background-image: $svg-radio-false-error;
+		}
+		&:checked {
+			background-image: $svg-radio-true;
+
+			&.error {
+				background-image: $svg-radio-true-error;
+			}
+		}
+	}
+	input[type='checkbox'] {
+		background-image: $svg-check-false;
+
+		&.error {
+			background-image: $svg-check-false-error;
+		}
+		&:checked {
+			background-image: $svg-check-true;
+
+			&.error {
+				background-image: $svg-check-true-error;
+			}
+		}
+	}
+}
+
+.form-control-with-icon {
+	position: relative;
+
+	.icon {
+		display: block;
+		position: absolute;
+		color: $muted-text-color;
+		font-size: 1.2em;
+		padding: ($form-padding-y * 2) ($form-padding-x / 2) 0;
+		line-height: 1em;
+	}
+	#{$text-inputs-list} {
+		padding-left: 2.5em;
+	}
+}
+
+.form-combine {
+	.form-control {
+		#{$text-inputs-list} {
+			border-radius: 0;
+		}
+	}
+	.form-combine-first {
+		#{$text-inputs-list} {
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+		}
+	}
+	.form-combine-last {
+		margin-top: -1px;
+
+		#{$text-inputs-list} {
+			border-bottom-left-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+	}
+}
+
+.form-control-date {
+	&-year-label,
+	&-month-label,
+	&-day-label {
+		display: inline-block;
+		padding: $form-padding-y 0.5em;
+		line-height: $form-line-height;
+	}
+	@include spmode {
+		select {
+			display: block;
+			float: left;
+			width: 20%;
+
+			&.form-control-date-year {
+				width: 30%;
+			}
+		}
+		&-year-label,
+		&-month-label,
+		&-day-label {
+			display: block;
+			float: left;
+			width: 10%;
+			text-align: center;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+	@include pcmode {
+		select {
+			display: inline-block;
+			width: 5.5em;
+		}
+	}
+}
+.form-postal-code {
+	@include spmode{
+		.address {
+			input {
+				float: left;
+				width: 350px;
+				height: 90px;
+				border-radius: 3px;
+			}
+		}
+		.auto-input {
+			button {
+				float: right;
+				width: 218px;
+				height: 60px;
+				margin-top: 15px;
+				margin-right: 20px;
+				font-size: 1em;
+				background: $button-color-utility;
+			}
+		}
+	}
+	@include pcmode{
+		.address {
+			input {
+				float: left;
+				width: 100px;
+				height: 40px;
+				border-radius: 3px;
+			}
+		}
+		.auto-input {
+			button {
+				float: right;
+				margin-top: 5px;
+				margin-right: 100px;
+				width: 120px;
+				height: 30px;
+				background: $button-color-utility;
+			}
+		}
+	}
+}
+.form-helper {
+	font-size: 0.68em;
+	line-height: 2em;
+	text-align: right;
+	@include pcmode {
+		text-align: left;
+		font-size: 1em;
+	}
+}
+.form-errors {
+	width: 100%;
+	background: $danger-bg-color;
+	line-height: 1.8em;
+	padding: $form-container-padding;
+	margin-bottom: $form-margin-y;
+	@include pcmode {
+		@include container($small-container-width);
+		border-radius: $form-border-radius;
+	}
+}
+.form-submit {
+	font-size: 1rem;
+	display: block;
+	width: auto;
+	margin: 5rem auto;
+	cursor: pointer;
+	border-radius: 3px;
+	padding: 0.5em 2.9em;
+	border: 0;
+	color: #fff;
+	background: $button-color-submit;
+	@include transition(opacity $link-fade-speed linear);
+	&:hover {
+		opacity: 0.7;
+	}
+	@include spmode {
+		padding-left: 0;
+		padding-right: 0;
+		font-size: 1.3em;
+		display: block;
+		width: 100%;
+	}
+}
+.form {
+	font-size: $form-sp-font-size;
+	@include pcmode {
+		font-size: $form-font-size;
+	}
+	// form-label と form-control が横並びになる
+	&-horizontal {
+		.form-group {
+			@include clearfix;
+			margin-bottom: $form-margin-y / 2;
+			@include pcmode {
+				margin-bottom: $form-margin-y;
+			}
+		}
+		.form-label {
+			display: block;
+			@include spmode {
+				padding: 0 $form-padding-x;
+				width: 100%;
+			}
+			@include pcmode {
+				float: left;
+				width: 31%;
+				margin: 0 1.5% 0 0;
+				text-align: right;
+			}
+		}
+		.form-control {
+			display: block;
+			@include spmode {
+				padding: 0 $form-padding-x;
+				width: 100%;
+			}
+			@include pcmode {
+				float: left;
+				width: 61%;
+			}
+		}
+		.form-actions {
+			padding: 0 $form-padding-x * 2.5;
+		}
+		.require-help {
+			@include pcmode {
+				position: absolute;
+				top: 1.5em;
+				right: 1.5em;
+
+				.require-mark {
+					color: $danger-color;
+					display: inline-block;
+					margin-right: 0.5em;
+				}
+			}
+			@include spmode {
+				position: absolute;
+				top: 1.8em;
+				right: 1.8em;
+				font-size: 0.7em;
+
+				.require-mark {
+					color: $danger-color;
+					display: inline-block;
+					margin-right: 0.5em;
+				}
+			}
+		}
+	}
+}
+input,
+select,
+textarea {
+	outline: 0;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+	appearance: none;
+}
+// http://qiita.com/38kun/items/54c19077f95f0fc1a19a
+::-webkit-input-placeholder {
+	color: #ccc;
+	opacity: 1;
+}
+:-moz-placeholder {
+	color: #ccc;
+}
+::-moz-placeholder {
+	color: #ccc;
+	opacity: 1;
+}
+:-ms-input-placeholder {
+	color: #ccc;
+}
+// 都道府県select
+.prefecture {
+	@include pcmode {
+		.form-control {
+			select {
+				width: 150px;
+			}
+		}
+	}
+}
+// 電話番号form
+.phone-number {
+	@include pcmode {
+		.form-control {
+			input {
+				width: 150px;
+			}
+		}
+	}
+}

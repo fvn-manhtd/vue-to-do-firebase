@@ -1,0 +1,65 @@
+.header {
+    
+    @include pcmode(){
+        border-bottom: 1px solid rgba($link-color, .1);
+        height: $header-height-pc;
+        margin: 10px 0;
+        .container{
+            @include clearfix;
+        }
+        .logo{
+            float: left;
+            width: 200px;
+            margin: 5px 0;
+            a {
+                color: $link-color;
+                font-size: 1.6em;
+                font-weight: 700;
+                svg{
+                    margin-right: 5px;
+                }
+            }
+        }
+        .search-note{
+            float: left;
+            width: 400px;
+        }
+        .controls{
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            .form-submit{
+                margin: 0; 
+                padding: 0.5em 1em;
+            }
+        }
+    }
+
+    @include spmode(){
+        border-bottom: 1px solid rgba($link-color, .1);
+        height: $header-height-sp;
+        margin: 10px 0;
+        .logo{
+            margin: 5px 0;
+            a {
+                color: $link-color;
+                font-size: 1.6em;
+            }
+        }
+        .search-note{
+            margin: 20px 0;
+            width: 100%;
+        }
+        .controls{
+            position: absolute;
+            right: 10px;
+            top: 15px;
+            .form-submit{
+                margin: 0;   
+                font-size: 0.9em;
+                width: 120px;
+            }
+        }
+    }
+    
+}

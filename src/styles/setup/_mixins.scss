@@ -1,0 +1,102 @@
+@mixin pcmode {
+	@media (min-width: $sp-break-point + 1) { @content; }
+}
+
+@mixin spmode {
+	@media (max-width: $sp-break-point) { @content; }
+}
+
+@mixin touchmode() {
+	.touch-device & { @content; }
+}
+
+@mixin clearfix {
+	zoom: 1;
+
+	&:before,
+	&:after {
+		content: '';
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+}
+
+@mixin container($width: $container-width) {
+	max-width: $width;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin gray-container($width: $small-container-width) {
+	width: 100%;
+	padding: $gray-container-padding;
+	background: $gray-container-bg-color;
+
+	@include pcmode {
+		@include container($width);
+	}
+}
+
+@mixin transition($transition...) {
+	-moz-transition: $transition;
+	-o-transition: $transition;
+	-webkit-transition: $transition;
+	transition: $transition;
+}
+
+@mixin animation($animate...) {
+	$max: length($animate);
+	$animations: '';
+
+	@for $i from 1 through $max {
+		$animations: #{$animations + nth($animate, $i)};
+
+		@if $i < $max {
+			$animations: #{$animations + ", "};
+		}
+	}
+	-webkit-animation: $animations;
+	animation:		 $animations;
+}
+
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+
+@mixin option-button {
+	color: #555;
+	background: #f7f7f7;
+
+	@include pcmode {
+		display: inline-block;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		border-radius: 3px;
+		cursor: pointer;
+		@include transition(opacity $link-fade-speed linear);
+
+		&:hover {
+			opacity: $button-hover-opacity;
+		}
+	}
+	@include spmode {
+		display: block;
+		width: 70px;
+		height: 70px;
+		line-height: 70px;
+		font-size: 40px;
+		text-align: center;
+		border-radius: 3px;
+	}
+}

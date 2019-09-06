@@ -1,0 +1,57 @@
+body {
+    line-height: $default-line-height;
+    font-family: $sans-serif-font;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    color: $text-color;
+
+    a {
+      img {
+        @include transition(opacity $link-fade-speed linear);
+      }
+
+      &:link {
+        color: $link-color;
+        text-decoration: none;
+        @include transition(color $link-fade-speed linear, opacity $link-fade-speed linear, background-color $link-fade-speed linear);
+      }
+
+      &:visited {
+        color: $link-color-visited;
+        text-decoration: none;
+      }
+
+      &:hover {
+        color: $link-color-hover;
+        text-decoration: none;
+
+        img {
+          opacity: 0.6;
+        }
+      }
+
+      &:active {
+        color: $link-color-active;
+        text-decoration: none;
+      }
+    }
+
+    button {
+			cursor: pointer;
+			border-radius: 3px;
+			border: 0;
+			color: #fff;
+			@include transition(opacity $link-fade-speed linear);
+
+			&:hover {
+				opacity: $button-hover-opacity;
+			}
+    }
+    
+    .container{
+      width: calc(#{$pc-width} - 20px);
+
+      
+      margin: 0 auto;
+      
+    }
+  }

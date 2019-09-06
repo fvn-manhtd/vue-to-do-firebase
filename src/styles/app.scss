@@ -1,0 +1,22 @@
+//Setup 
+@import "setup/variables.scss";
+@import "setup/normalize.scss";
+@import "setup/mixins.scss";
+
+//Common
+@import "common/base.scss";
+@import "common/svg.scss";
+@import "common/form.scss";
+
+
+//Components
+@import "components/Header.scss";
+@import "components/Footer.scss";
+@import "components/SearchNote.scss";
+@import "components/NewNote.scss";
+@import "components/ListNote.scss";
+@import "components/Modal.scss";
+
+//View
+@import "views/Home.scss";
+

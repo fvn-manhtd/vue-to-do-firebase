@@ -1,0 +1,70 @@
+//サイズ等
+$default-line-height: 1.4;
+$pc-width: 100%;
+$sp-break-point: 750px;
+$container-width: $pc-width;
+$header-height-pc: 60px;
+$header-height-sp: 120px;
+$small-container-width: 640px;
+$gray-container-padding: 60px;
+
+// Font
+$sans-serif-font: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+$serif-font: Georgia, 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+$monospace-font: Consolas, 'Courier New', Courier, Monaco, monospace;
+
+// Color
+$text-color: #000;
+$muted-text-color: #bababa;
+$link-color: #000;
+$link-color-visited: #000;
+$link-color-hover: #aaa;
+$link-color-active: #ccc;
+$header-bg-color: #f7f7f7;
+$default-border-color: #eeeeee;
+$footer-border-color: #e4e4e4;
+$footer-link-focus-bg-color: #555;
+$footer-link-focus-color: #fff;
+$active-border-color: #989898;
+$button-color-default: #333;
+$button-color-submit: #3a9ce3;
+$button-color-cancel: #797878;
+$button-color-utility: #7f95a7;
+$button-color-option: #f7f7f7;
+$button-color-complete: #e33a52;
+$danger-color: #b73c3c;
+$danger-bg-color: #ffe3e3;
+$success-color: #8fbc8f;
+
+//Animation
+$default-fade-speed: 0.3s;
+$link-fade-speed: 0.3s;
+
+// Effect
+$default-shadow-color: rgba(0, 0, 0, 0.3);
+$default-shadow-scale: 10px;
+$button-hover-opacity: 0.7;
+
+// easing
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.5);
+
+
+$text-inputs-list: (
+	'input[type='color']',
+	'input[type='date']',
+	'input[type='datetime']',
+	'input[type='datetime-local']',
+	'input[type='email']',
+	'input[type='month']',
+	'input[type='number']',
+	'input[type='password']',
+	'input[type='search']',
+	'input[type='tel']',
+	'input[type='text']',
+	'input[type='time']',
+	'input[type='url']',
+	'input[type='week']',
+	'input:not([type])',
+	'textarea',
+);
+

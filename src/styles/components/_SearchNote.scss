@@ -1,0 +1,14 @@
+.search-note{
+    &__form{
+      input{
+        width: calc(100% - 100px);
+        float: left;
+      }
+      button{
+        float: left;
+        width: 100px;
+        border: 1px solid $form-border-color;
+        color: $button-color-default;
+      }
+    }
+  }
